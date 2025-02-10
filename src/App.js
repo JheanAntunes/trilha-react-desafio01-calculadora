@@ -5,43 +5,37 @@ import { Container, Content, Row } from "./styles";
 import { useOperation } from "./hooks/operation";
 
 const App = () => {
-  const {
-    currentNumber,
-    handleOnClear,
-    handleAddNumber,
-    handleMinusNumbers,
-    handleSumNumbers,
-    handleEquals,
-  } = useOperation();
+  const { addNumber, clear, currentNumber, equals, handleOperation } =
+    useOperation();
 
   return (
     <Container>
       <Content>
         <Input value={currentNumber} />
         <Row>
-          <Button>x</Button>
-          <Button>/</Button>
-          <Button>%</Button>
-          <Button onClick={handleOnClear}>c</Button>
-          <Button>.</Button>
+          <Button onClick={() => handleOperation("x")}>x</Button>
+          <Button onClick={() => handleOperation("/")}>/</Button>
+          <Button onClick={() => handleOperation("%")}>%</Button>
+          <Button onClick={clear}>C</Button>
+          <Button onClick={() => addNumber(".")}>.</Button>
         </Row>
         <Row>
-          <Button onClick={() => handleAddNumber("7")}>7</Button>
-          <Button onClick={() => handleAddNumber("8")}>8</Button>
-          <Button onClick={() => handleAddNumber("9")}>9</Button>
-          <Button onClick={handleMinusNumbers}>-</Button>
+          <Button onClick={() => addNumber("7")}>7</Button>
+          <Button onClick={() => addNumber("8")}>8</Button>
+          <Button onClick={() => addNumber("9")}>9</Button>
+          <Button onClick={() => handleOperation("-")}>-</Button>
         </Row>
         <Row>
-          <Button onClick={() => handleAddNumber("4")}>4</Button>
-          <Button onClick={() => handleAddNumber("5")}>5</Button>
-          <Button onClick={() => handleAddNumber("6")}>6</Button>
-          <Button onClick={handleSumNumbers}>+</Button>
+          <Button onClick={() => addNumber("4")}>4</Button>
+          <Button onClick={() => addNumber("5")}>5</Button>
+          <Button onClick={() => addNumber("6")}>6</Button>
+          <Button onClick={() => handleOperation("+")}>+</Button>
         </Row>
         <Row>
-          <Button onClick={() => handleAddNumber("1")}>1</Button>
-          <Button onClick={() => handleAddNumber("2")}>2</Button>
-          <Button onClick={() => handleAddNumber("3")}>3</Button>
-          <Button onClick={handleEquals}> = </Button>
+          <Button onClick={() => addNumber("1")}>1</Button>
+          <Button onClick={() => addNumber("2")}>2</Button>
+          <Button onClick={() => addNumber("3")}>3</Button>
+          <Button onClick={equals}>=</Button>
         </Row>
       </Content>
     </Container>
