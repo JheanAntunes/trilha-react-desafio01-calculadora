@@ -11,7 +11,6 @@ export const useOperation = () => {
   };
 
   const handleAddNumber = (num) => {
-    console.log("closures", num);
     setCurrentNumber((prev) => `${prev === "0" ? "" : prev}${num}`);
   };
 
